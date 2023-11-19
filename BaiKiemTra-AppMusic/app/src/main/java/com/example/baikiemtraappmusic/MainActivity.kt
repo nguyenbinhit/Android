@@ -35,14 +35,12 @@ class MainActivity : ComponentActivity() {
                 Manifest.permission.READ_EXTERNAL_STORAGE
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // Permission is not granted, request it
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
                 READ_EXTERNAL_STORAGE_REQUEST
             )
         } else {
-            // Permission is already granted, proceed with your app logic
             initializeApp()
         }
     }
@@ -179,11 +177,8 @@ class MainActivity : ComponentActivity() {
 
         if (requestCode == READ_EXTERNAL_STORAGE_REQUEST) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted, proceed with your app logic
                 initializeApp()
             } else {
-                // Permission denied, handle accordingly (show a message, disable features, etc.)
-                // For simplicity, you can finish the activity in this example
                 finish()
             }
         }
